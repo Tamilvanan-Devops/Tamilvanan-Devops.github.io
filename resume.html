@@ -12,10 +12,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet" />
   <style>
     /* Single-column, text-only layout: parses cleanly in applicant tracking systems (ATS). */
-    :root { --ink: #0f172a; --soft: #1f2937; --muted: #4b5563; --rule: #cbd5e1; --accent: #1e3a8a; }
+    :root { --ink: #0f172a; --soft: #1f2937; --muted: #4b5563; --rule: #cbd5e1; --accent: #3b5bdb; }
     * { box-sizing: border-box; }
     html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    body { margin: 0; background: #05070f; font-family: Inter, "Segoe UI", Calibri, Arial, sans-serif; color: var(--soft); font-size: 9.7pt; line-height: 1.42; }
+    body { margin: 0; background: #05070f; font-family: Inter, "Segoe UI", Calibri, Arial, sans-serif; color: var(--soft); font-size: 9.9pt; line-height: 1.43; }
     a { color: inherit; text-decoration: none; }
     p { margin: 0; }
 
@@ -26,26 +26,41 @@
 
     .page { width: 210mm; min-height: 297mm; margin: 1.5rem auto 3rem; padding: 12mm 14mm; background: #fff; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .6); }
 
-    header { text-align: center; padding-bottom: 2.6mm; border-bottom: .6mm solid var(--accent); }
-    h1 { margin: 0; font-size: 22pt; line-height: 1.1; font-weight: 700; letter-spacing: .01em; color: var(--ink); }
-    .title { margin: 1mm 0 1.8mm; font-size: 11pt; font-weight: 600; color: var(--accent); }
-    .contact { font-size: 8.9pt; color: var(--muted); line-height: 1.55; }
+    header { display: grid; grid-template-columns: auto 1fr; gap: 6mm; align-items: center; padding-bottom: 3.4mm; border-bottom: .6mm solid var(--ink); }
+    header.no-photo { grid-template-columns: 1fr; }
+    header img { width: 24mm; height: 24mm; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.2mm #fff, 0 0 0 1.6mm var(--accent); }
+    h1 { margin: 0; font-size: 24pt; line-height: 1.05; font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
+    .title { margin: 1.4mm 0 2.2mm; font-size: 11.5pt; font-weight: 600; color: var(--accent); }
+    .contact { display: flex; flex-wrap: wrap; gap: 1.2mm 5mm; font-size: 8.9pt; color: var(--soft); }
+    .contact span { display: inline-flex; align-items: center; gap: 1.4mm; }
+    .contact svg { flex: none; width: 3.4mm; height: 3.4mm; color: var(--accent); }
     .contact a:hover { color: var(--accent); text-decoration: underline; }
 
-    h2 { break-after: avoid; margin: 4mm 0 1.6mm; padding-bottom: .7mm; border-bottom: .3mm solid var(--rule); font-size: 10.3pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
-    .comp { margin-top: 1.6mm; font-size: 9.1pt; color: var(--ink); font-weight: 500; }
+    h2 { break-after: avoid; margin: 4.6mm 0 1.8mm; padding-bottom: .8mm; border-bottom: .3mm solid var(--rule); font-size: 10.6pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 
-    .skills p { display: grid; grid-template-columns: 37mm 1fr; gap: 3mm; margin-bottom: .5mm; font-size: 9.1pt; }
+    .hl { margin: 0; padding-left: 4.6mm; }
+    .hl li { margin-bottom: .7mm; break-inside: avoid; }
+    .hl li::marker { color: var(--accent); }
+    .hl b { color: var(--ink); font-weight: 600; }
+
+    .comp { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9mm 4mm; margin: 0; padding: 0; list-style: none; font-size: 9.4pt; font-weight: 500; color: var(--ink); }
+    .comp li { position: relative; padding-left: 3.6mm; }
+    .comp li::before { content: ""; position: absolute; left: .2mm; top: .58em; width: 1.3mm; height: 1.3mm; background: var(--accent); transform: rotate(45deg); }
+
+    .skills p { display: grid; grid-template-columns: 44mm 1fr; gap: 3mm; margin-bottom: .7mm; font-size: 9.3pt; }
     .skills b { color: var(--ink); font-weight: 600; }
 
-    .org { margin-bottom: 2.6mm; }
+    .org { margin-bottom: 3.4mm; }
     .org__head, .role__head, .row { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
     .org__head { break-after: avoid; }
     .org h3 { margin: 0; font-size: 10.8pt; font-weight: 700; color: var(--ink); }
     .org__head span, time { flex: none; font-size: 9pt; color: var(--muted); white-space: nowrap; }
-    .role { margin-top: .9mm; }
+    .role { margin-top: 1.4mm; }
     .role__head { break-after: avoid; }
-    .role h4 { margin: 0; font-size: 10pt; font-weight: 600; color: var(--accent); }
+    .role h4 { margin: 0; font-size: 10.2pt; font-weight: 600; color: var(--accent); }
+    .role h4 small { margin-left: 2mm; padding: .2mm 1.3mm; border: .25mm solid currentColor; border-radius: 1mm; font-size: 7pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; vertical-align: .25mm; }
+    .scope { break-after: avoid; margin-top: .3mm; font-size: 9.3pt; font-style: italic; color: var(--muted); }
+    .scope b { font-style: normal; font-weight: 600; color: var(--soft); }
     .role ul { margin: .7mm 0 0; padding-left: 4.6mm; }
     .role li { margin-bottom: .45mm; break-inside: avoid; }
     .role li::marker { color: var(--accent); }
@@ -55,7 +70,7 @@
     .row { margin-bottom: .8mm; }
     .row b { color: var(--ink); font-weight: 600; }
 
-    @page { size: A4; margin: 11mm 13mm; }
+    @page { size: A4; margin: 12mm 14mm 13mm; }
     @media print {
       body { background: #fff; }
       .toolbar { display: none; }
@@ -63,6 +78,7 @@
     }
     @media screen and (max-width: 820px) {
       .page { width: auto; margin: 0; padding: 7vw 6vw; min-height: 0; }
+      header { grid-template-columns: 1fr; }
       .skills p { grid-template-columns: 1fr; gap: 0; margin-bottom: 1.5mm; }
       .org__head, .role__head, .row { flex-direction: column; gap: 0; }
     }
@@ -83,21 +99,31 @@
       const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
       const pretty = (u) => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
       const span = (p) => p.replace(/\s*[—–]\s*/, " – ");
-      const join = (parts) => parts.filter(Boolean).join(" &nbsp;|&nbsp; ");
+      const ic = {
+        pin: '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+        phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+        mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+        in: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
+        gh: '<path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>',
+        web: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+      };
+      const svg = (k) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ic[k]}</svg>`;
+      const item = (k, text, href) => {
+        const inner = `<span>${svg(k)}${esc(text)}</span>`;
+        return href ? `<a href="${esc(href)}">${inner}</a>` : inner;
+      };
       // Phone is never stored in content.js; build-resume.sh passes it as ?phone= for private copies.
       const phone = (new URLSearchParams(location.search).get("phone") || "").replace(/[^\d+\-() ]/g, "").trim();
       const L = pr.links;
 
-      const contact1 = join([
-        esc(pr.location),
-        phone && `<a href="tel:${esc(phone.replace(/[^\d+]/g, ""))}">${esc(phone)}</a>`,
-        L.email && `<a href="mailto:${esc(L.email)}">${esc(L.email)}</a>`,
-      ]);
-      const contact2 = join([
-        L.linkedin && `<a href="${esc(L.linkedin)}">${esc(pretty(L.linkedin))}</a>`,
-        L.github && `<a href="${esc(L.github)}">${esc(pretty(L.github))}</a>`,
-        L.site && `<a href="${esc(L.site)}">${esc(pretty(L.site))}</a>`,
-      ]);
+      const contact = [
+        item("pin", pr.location),
+        phone && item("phone", phone, `tel:${phone.replace(/[^\d+]/g, "")}`),
+        L.email && item("mail", L.email, `mailto:${L.email}`),
+        L.linkedin && item("in", pretty(L.linkedin), L.linkedin),
+        L.github && item("gh", pretty(L.github), L.github),
+        L.site && item("web", pretty(L.site), L.site),
+      ].filter(Boolean).join("");
 
       // Group consecutive roles at the same company so promotions read as one tenure.
       const orgs = [];
@@ -113,15 +139,23 @@
       };
 
       document.getElementById("resume").innerHTML = `
-        <header>
-          <h1>${esc(pr.name)}</h1>
-          <p class="title">${esc(R.title || pr.role)}</p>
-          <p class="contact">${contact1}<br>${contact2}</p>
+        <header class="${pr.photo ? "" : "no-photo"}">
+          ${pr.photo ? `<img src="${esc(pr.photo)}" alt="${esc(pr.name)}">` : ""}
+          <div>
+            <h1>${esc(pr.name)}</h1>
+            <p class="title">${esc(R.title || pr.role)}</p>
+            <div class="contact">${contact}</div>
+          </div>
         </header>
 
         <h2>Professional Summary</h2>
         <p>${esc(R.summary || pr.tagline)}</p>
-        ${R.competencies?.length ? `<p class="comp">${R.competencies.map(esc).join(" &nbsp;•&nbsp; ")}</p>` : ""}
+
+        ${R.highlights?.length ? `<h2>Career Highlights</h2>
+        <ul class="hl">${R.highlights.map((h) => `<li><b>${esc(h.lead)}</b> ${esc(h.text)}</li>`).join("")}</ul>` : ""}
+
+        ${R.competencies?.length ? `<h2>Core Competencies</h2>
+        <ul class="comp">${R.competencies.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>` : ""}
 
         <h2>Technical Skills</h2>
         <div class="skills">${(R.skills || []).map((g) => `<p><b>${esc(g.group)}:</b><span>${esc(g.items)}</span></p>`).join("")}</div>
@@ -132,9 +166,10 @@
             <div class="org__head"><h3>${esc(o.company)}</h3><span>${esc(o.location)}${o.roles.length > 1 ? ` &nbsp;|&nbsp; ${esc(tenure(o))}` : ""}</span></div>
             ${o.roles.map((x) => `
               <div class="role">
-                <div class="role__head"><h4>${esc(x.role)}</h4><time>${esc(span(x.period))}</time></div>
+                <div class="role__head"><h4>${esc(x.role)}${x.promoted ? "<small>Promoted</small>" : ""}</h4><time>${esc(span(x.period))}</time></div>
+                ${x.client || x.scope ? `<p class="scope">${x.client ? `<b>Client: ${esc(x.client)}.</b> ` : ""}${esc(x.scope || "")}</p>` : ""}
                 <ul>${x.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
-                ${x.tags?.length ? `<p class="tools"><b>Tech:</b> ${x.tags.map(esc).join(", ")}</p>` : ""}
+                ${x.tags?.length ? `<p class="tools"><b>Tech stack:</b> ${x.tags.map(esc).join(", ")}</p>` : ""}
               </div>`).join("")}
           </section>`).join("")}
 
@@ -142,6 +177,14 @@
         <p class="row"><span><b>${esc(P.education.degree)}</b>, ${esc(P.education.school)}</span><time>${esc(span(P.education.period))}</time></p>
         ${P.certifications.map((c) => `<p class="row"><span><b>${esc(c.name)}</b>, ${esc(c.issuer)}</span><time>${esc(c.date)}</time></p>`).join("")}
         ${R.languages ? `<p class="row"><span><b>Languages:</b> ${esc(R.languages)}</span></p>` : ""}`;
+
+      const css = (t) => `"${String(t).replace(/["\\]/g, "")}"`;
+      const footer = document.createElement("style");
+      footer.textContent = `@page {
+        @bottom-left { content: ${css(`${pr.name} · ${R.title ? R.title.split("|")[0].trim() : pr.role}`)}; font: 7.6pt Inter, Arial, sans-serif; color: #64748b; }
+        @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 7.6pt Inter, Arial, sans-serif; color: #64748b; }
+      }`;
+      document.head.appendChild(footer);
 
       document.getElementById("print").addEventListener("click", () => print());
     })();

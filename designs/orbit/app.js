@@ -209,7 +209,7 @@
       <span class="planet planet--${x.edu ? "moon" : planets[i % planets.length]}" aria-hidden="true"></span>
       <article class="xp-card">
         <div class="xp-meta">
-          <div><b>${x.edu ? "Launch pad" : `Exp ${String(n).padStart(2, "0")}`}</b>${esc(x.company)}</div>
+          <div><b>${x.edu ? "Launch pad" : `Exp ${String(n).padStart(2, "0")}`}</b>${esc(x.company)}${x.client ? ` · Client: ${esc(x.client.replace(/\s*\(.*\)$/, ""))}` : ""}</div>
           <div class="right">${x.current ? `<span class="badge">Now shipping</span><br>` : ""}${esc(x.period)}${x.duration ? `<span class="dur">${esc(x.duration)}</span>` : ""}</div>
         </div>
         <h3>${esc(x.role)}</h3>
