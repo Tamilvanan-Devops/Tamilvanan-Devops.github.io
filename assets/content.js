@@ -21,9 +21,6 @@ window.PORTFOLIO = {
       "I like declarative systems: Git is the source of truth, controllers reconcile it, and every change is reviewed, repeatable and reversible.",
     ],
     quote: "Less toil, fewer handoffs, and production that stays boring.",
-    // Short professional summary used at the top of resume.html.
-    resumeSummary:
-      "Senior DevOps / SRE engineer with 8+ years across Conga, Lucid Motors and Sify Technologies. I design and run a multi-stage GitOps release platform (Argo CD, Argo Workflows, Kargo) that ships 187 microservices across 9 stages and 18+ AWS and Azure environments. Hands-on across Kubernetes (EKS/AKS, Karpenter, KEDA), Terraform and Crossplane, GitHub Actions, Jenkins and Spinnaker, event-driven messaging (SQS, SNS, Azure Service Bus, Kafka), platform security, and end-to-end FinOps. Currently contributing to Backstage and building AI-assisted DevOps workflows.",
     available: "Open to platform engineering conversations",
     // Rotating titles typed out in the Orbit hero.
     roles: [
@@ -43,6 +40,8 @@ window.PORTFOLIO = {
       github: "https://github.com/Tamilvanan-Devops",
       email: "tamilvananaws@gmail.com",
       blog: "", // optional, e.g. a dev.to / Medium / Hashnode profile
+      // Public site URL printed on the resume; switch to the custom domain once it is live.
+      site: "https://tamilvanan-devops.github.io",
       // resume.html is generated from this file; its "Download PDF" button serves assets/Tamil-Vanan-Resume.pdf
       // (rebuild the PDF with ./scripts/build-resume.sh after editing content).
       resume: "resume.html",
@@ -72,10 +71,11 @@ window.PORTFOLIO = {
     { icon: "shield", title: "Secure by default", text: "Secrets come from a manager, policies run in audit before enforce, and images and tokens are pinned and least-privilege." },
   ],
 
-  journeyIntro: "Three companies, one direction: from data-centre operations in 2017 to running a multi-cloud GitOps platform today.",
+  journeyIntro: "Three companies, one direction: from AWS cloud administration in 2017 to running a multi-cloud GitOps platform today.",
   journey: [
-    { year: "2017", title: "Into operations", text: "Joined Sify Technologies after a B.E. at Anna University. Ran Linux and data-centre infrastructure and automated the routine work." },
-    { year: "2021", title: "Lucid Motors", text: "DevOps Engineer: CI/CD pipelines, containerised deployments and cloud automation." },
+    { year: "2017", title: "Into the cloud", text: "Joined Sify Technologies as an AWS Cloud Administrator after a B.E. at Anna University: EC2, VPC, RDS, Route 53, CloudFront and CloudWatch." },
+    { year: "2019", title: "AWS DevOps", text: "Promoted to AWS DevOps Engineer: Jenkins CI/CD, Ansible, Docker and multi-AZ AWS deployments for client GEICO." },
+    { year: "2021", title: "Lucid Motors", text: "CI/CD for 15 model-based ECUs in electric-vehicle software with Jenkins, GitLab and JFrog Artifactory." },
     { year: "2022", title: "Joined Conga", text: "Built Jenkins shared libraries: Kaniko build-and-push, Python CI, Checkmarx scanning and artifact clean-up." },
     { year: "2023", title: "Kubernetes data tier", text: "Automated Kafka, MongoDB, the EBS CSI driver and the ELK stack on Kubernetes with Helm and Ansible." },
     { year: "2024", title: "Azure & IaC", text: "Provisioned Azure Log Analytics, Key Vault and VMs with Terraform; onboarded platform services to Kubernetes." },
@@ -323,7 +323,8 @@ window.PORTFOLIO = {
     },
   ],
 
-  // Orbit shows the first two points of each role and puts the rest behind "Show more outcomes".
+  // Shared by the site and resume.html. Orbit shows the first two points of each role and puts the rest
+  // behind "Show more outcomes". Consecutive roles at the same company are grouped on the resume.
   experience: [
     {
       role: "Senior Software Engineer — DevOps",
@@ -332,13 +333,13 @@ window.PORTFOLIO = {
       location: "Chennai, India",
       current: true,
       points: [
-        "Own the GitOps release platform (Argo CD, Argo Workflows, Kargo) that ships 187 microservices across 9 stages and 18+ AWS and Azure environments.",
-        "Led platform FinOps across network (flow logs, single-AZ, VPC endpoints), images (pull-through caches, slimmer Dockerfiles), storage (ECR/S3 lifecycle rules) and compute (ARM64, right-sizing, scale-to-zero).",
-        "Built Kargo/PR-based promotions with parallel rebase-retry and a hotfix lane straight to production.",
-        "Provisioned SQS/SNS and Azure Service Bus topics and subscriptions with Terraform, with KEDA queue-based autoscaling for workers.",
-        "Delivered ephemeral review environments, elastic ARM64 runners and the org-wide reusable GitHub Actions toolkit.",
-        "Hardened the platform with External Secrets (Doppler), Kyverno, CVE remediation and an Argo control-plane tune-up.",
-        "Contributing Backstage plugins and AI-assisted DevOps workflows with Claude, GitHub Copilot agents, MCP and Azure AI Foundry.",
+        "Own the multi-stage GitOps release platform (Argo CD, Argo Workflows, Kargo) that ships 187 microservices across 14 product lines, 9 stages and 18+ AWS and Azure environments.",
+        "Designed PR-based stage promotion with Kargo, including parallel rebase-and-retry and a dedicated hotfix lane to production, removing release-queue bottlenecks.",
+        "Led FinOps for the CI/CD platform: VPC Flow Log analysis, single-AZ Karpenter consolidation (97% of traffic), S3/ECR VPC endpoints, pull-through image caches, slimmer images, ECR/S3 lifecycle rules, ARM64 and scale-to-zero, with a roadmap to cut NAT egress cost by ~60%.",
+        "Delivered per-PR ephemeral review environments (TTL cut from 24h to 8h), autoscaling ARM64 GitHub Actions runners and an org-wide reusable GitHub Actions toolkit.",
+        "Provisioned AWS SQS/SNS and Azure Service Bus topics and subscriptions with Terraform, with KEDA queue-based autoscaling for event-driven workers and Crossplane compositions for self-service infrastructure.",
+        "Hardened the platform with External Secrets (Doppler), Kyverno policies, Trivy/Checkmarx scanning, CVE remediation and Argo control-plane tuning.",
+        "Contributing Backstage developer-portal plugins and AI-assisted DevOps workflows with Claude, GitHub Copilot agents, MCP servers and Azure AI Foundry.",
       ],
       tags: ["Kubernetes", "Argo CD", "Kargo", "Terraform", "Karpenter", "KEDA", "AWS SQS", "Azure Service Bus", "GitHub Actions", "Backstage", "Claude Code"],
     },
@@ -348,11 +349,11 @@ window.PORTFOLIO = {
       period: "Jan 2022 — Mar 2025",
       location: "Chennai, India",
       points: [
-        "Built Jenkins shared libraries (Kaniko build-and-push, Python CI, Checkmarx scanning, artifact clean-up) used across product teams.",
-        "Ran Spinnaker pipelines and webhook triggers for service deployments, then helped move services onto Argo CD GitOps.",
+        "Built Jenkins shared libraries (Kaniko build-and-push, Python CI, Checkmarx scanning, artifact clean-up) adopted across product teams to standardise CI.",
+        "Ran Spinnaker pipelines and webhook triggers for service deployments, then migrated services to Argo CD GitOps.",
         "Automated Kafka topics, MongoDB replication, the EBS CSI driver and the ELK stack on Kubernetes with Helm and Ansible.",
-        "Provisioned Azure infrastructure (VMs, Log Analytics, Key Vault) with Terraform, alongside AWS, Azure and IBM Cloud integrations.",
-        "Onboarded .NET services to Kubernetes with Kong ingress, SNS topics and KEDA autoscaling.",
+        "Provisioned Azure infrastructure (VMs, Log Analytics, Key Vault) with Terraform and maintained AWS, Azure and IBM Cloud integrations.",
+        "Onboarded .NET microservices to Kubernetes with Kong ingress, SNS topics and KEDA autoscaling.",
       ],
       tags: ["Jenkins", "Spinnaker", "Helm", "Ansible", "Kafka", "Terraform", "Azure", "IBM Cloud"],
     },
@@ -361,30 +362,42 @@ window.PORTFOLIO = {
       company: "Lucid Motors",
       period: "Jun 2021 — Dec 2021",
       location: "Chennai, India",
-      // TODO: refine these bullets with your actual Lucid Motors responsibilities
       points: [
-        "Built and maintained CI/CD pipelines for containerised services.",
-        "Automated cloud infrastructure and deployments with infrastructure as code and scripting.",
+        "Built and maintained CI/CD pipelines for 15 model-based ECUs (electronic control units) in electric-vehicle software using Jenkins, GitLab CI and JFrog Artifactory.",
+        "Scaled and supported a multi-stage CI system, diagnosing and resolving build and test failures raised by validation teams.",
+        "Defined the branching and merging strategy and drove repeatable DevOps practices across the infotainment organisation, with release documentation in Confluence and sprint planning in Jira.",
       ],
-      tags: ["Jenkins", "Docker", "Kubernetes", "AWS", "Terraform"],
+      tags: ["Jenkins", "GitLab CI", "JFrog Artifactory", "Git", "Jira", "Confluence"],
     },
     {
-      role: "DevOps Engineer",
+      role: "AWS DevOps Engineer",
       company: "Sify Technologies",
-      period: "Dec 2017 — Feb 2021",
+      period: "Apr 2019 — Feb 2021",
       location: "Chennai, India",
-      // TODO: refine these bullets with your actual Sify responsibilities
       points: [
-        "Ran Linux and cloud/data-centre infrastructure for enterprise customers.",
-        "Automated build, deployment and routine operations with Jenkins, shell and Python scripting.",
-        "Handled monitoring, incident response and change management in production environments.",
+        "Built end-to-end Jenkins CI/CD pipelines (controller/agent) with Maven, SonarQube quality gates and Nexus artifacts, deploying Java applications to Tomcat across Dev, QA and UAT for client GEICO.",
+        "Acted as release engineer for multiple development teams running parallel releases, owning Git branching, tagging and merges.",
+        "Containerised applications with Docker and automated server configuration with Ansible playbooks and roles.",
+        "Delivered highly available AWS deployments with Elastic Load Balancing across Availability Zones, HTTPS certificates and Prometheus/CloudWatch monitoring.",
       ],
-      tags: ["Linux", "Jenkins", "Bash", "Python"],
+      tags: ["AWS", "Jenkins", "Ansible", "Docker", "Maven", "SonarQube", "Nexus", "Prometheus"],
+    },
+    {
+      role: "AWS Cloud Administrator",
+      company: "Sify Technologies",
+      period: "Dec 2017 — Mar 2019",
+      location: "Chennai, India",
+      points: [
+        "Provisioned and administered Linux and Windows servers on AWS (EC2, VPC, RDS, S3, Route 53), with IAM users, groups and least-privilege policies.",
+        "Set up CloudFront CDN with S3 and server origins, Route 53 DNS, and AMI/EBS snapshot backups for disaster recovery.",
+        "Monitored production health with CloudWatch alarms and SNS notifications, and resolved day-to-day infrastructure incidents.",
+      ],
+      tags: ["AWS", "EC2", "CloudFront", "Route 53", "CloudWatch", "Linux"],
     },
   ],
 
   education: {
-    degree: "B.E. Electrical, Electronics & Communication Engineering",
+    degree: "B.E. Electronics & Communication Engineering",
     school: "Anna University, Chennai",
     period: "2013 — 2017",
   },
@@ -394,6 +407,30 @@ window.PORTFOLIO = {
     // TODO: add CKA / AWS / Terraform certifications as you earn them
   ],
 
+  // Resume-only content for resume.html: plain-text, keyword-rich rows that ATS parsers read well.
+  // The phone number is deliberately not stored here, so the public PDF omits it. For applications run:
+  //   PHONE="+91 ..." ./scripts/build-resume.sh ~/Downloads/Tamil_Vanan_Senior_DevOps_Engineer_Resume.pdf
+  resume: {
+    title: "Senior DevOps Engineer | Site Reliability | Platform Engineering",
+    summary:
+      "Senior DevOps and Site Reliability Engineer with 8+ years of experience designing, automating and operating cloud platforms on AWS and Azure. I own a multi-stage GitOps release platform (Argo CD, Argo Workflows, Kargo) that ships 187 microservices across 9 stages and 18+ environments through automated, Git-driven promotion. Hands-on across Kubernetes (EKS, AKS, Karpenter, KEDA), Terraform and Crossplane, GitHub Actions and Jenkins CI/CD, event-driven messaging, DevSecOps and FinOps. I replace manual releases with self-service automation and cut cloud spend through data-driven cost engineering.",
+    competencies: [
+      "Platform Engineering", "GitOps & Release Engineering", "Kubernetes (EKS / AKS)", "CI/CD Automation",
+      "Infrastructure as Code", "Site Reliability Engineering", "Cloud Cost Optimization (FinOps)", "DevSecOps", "Multi-cloud (AWS & Azure)",
+    ],
+    skills: [
+      { group: "Cloud", items: "AWS (EKS, EC2, VPC, S3, ECR, IAM, RDS, Route 53, CloudFront, SQS, SNS, CloudWatch), Azure (AKS, Service Bus, Key Vault, Log Analytics, AI Foundry), IBM Cloud, Cloudflare" },
+      { group: "Containers & GitOps", items: "Kubernetes, Docker, Helm, Kustomize, Argo CD, Argo Workflows, Argo Events, Kargo, Karpenter, KEDA, Kong, Rancher" },
+      { group: "CI/CD & Build", items: "GitHub Actions, Actions Runner Controller, Jenkins (shared libraries), Spinnaker, Azure DevOps, GitLab CI, BuildKit, Kaniko, Maven, Nexus, JFrog Artifactory, SonarQube" },
+      { group: "Infrastructure as Code", items: "Terraform, Crossplane, Ansible" },
+      { group: "Messaging & Data", items: "Kafka, AWS SQS/SNS, Azure Service Bus, MongoDB, Redis, PostgreSQL, TiDB" },
+      { group: "Observability", items: "OpenTelemetry, Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana), CloudWatch, Argo CD Notifications" },
+      { group: "Security", items: "External Secrets Operator, Doppler, HashiCorp Vault, Kyverno, Trivy, Checkmarx, IAM & RBAC" },
+      { group: "Scripting & Tools", items: "Bash, Python, Groovy, Node.js, YAML, Jsonnet, Git, Linux, Jira, Confluence" },
+      { group: "AI & Developer Portals", items: "Backstage, Claude Code, GitHub Copilot, MCP servers, Azure AI Foundry" },
+    ],
+    languages: "English, Tamil",
+  },
   // Rendered as capability cards; every item with an entry in `logos` shows its icon.
   skills: [
     { group: "Cloud & Infrastructure", items: ["AWS", "Azure", "IBM Cloud", "Cloudflare", "Linux", "EKS", "AKS", "VPC & networking", "S3 & ECR", "Key Vault"] },

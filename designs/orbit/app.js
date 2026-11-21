@@ -196,7 +196,7 @@
 
   // Experience: year-by-year journey + detailed roles
   $("journeyIntro").textContent = P.journeyIntro || "";
-  $("xpTotal").innerHTML = `<b>${esc(P.totalDuration)}</b> across ${P.companies} companies`;
+  $("xpTotal").innerHTML = `<b>${esc(pr.years)} years</b> across ${P.companies} companies`;
   $("journey").innerHTML = (P.journey || []).map((j) => `
     <li class="${j.next ? "next" : ""}" data-reveal><time>${esc(j.year)}</time><h4>${esc(j.title)}</h4><p>${esc(j.text)}</p></li>`).join("");
   const planets = ["earth", "neptune", "mars"];
@@ -304,7 +304,7 @@
   $("crewName").textContent = pr.name;
   $("crewRole").textContent = `${nowRole.role} @ ${nowRole.company}`;
   $("crewStats").innerHTML = [
-    ["Experience", P.totalDuration], ["Based in", pr.location],
+    ["Experience", `${pr.years} years`], ["Based in", pr.location],
     ["Companies", P.experience.map((x) => x.company).filter((v, i, a) => a.indexOf(v) === i).join(" · ")], ["Orbit", "GitOps · Kubernetes · FinOps"],
   ].map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
   $("crewStatus").textContent = pr.available;

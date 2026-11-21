@@ -46,16 +46,17 @@ This rewrites `index.html`. Run it again whenever you change your mind; the othe
 
 Already set: LinkedIn, email (`tamilvananaws@gmail.com`) and profile photo (`assets/img/profile.jpg`, the public 200×200 LinkedIn image).
 
-Total experience (shown as "8 yrs 9 mos across 3 companies") and each role's duration are **calculated automatically** from the `experience` periods, so they stay current. You only need to edit dates.
+Total experience (shown as "8+ years across 3 companies") and each role's duration are **calculated automatically** from the `experience` periods, so they stay current. You only need to edit dates.
 
 Tech logos are self-hosted in `assets/icons/` (devicon, MIT; simple-icons, CC0) and mapped by name in `logos`. Anything without a logo shows a small hexagon icon.
 
-- [ ] `profile.links.github`: your personal GitHub URL (currently a placeholder)
-- [x] Resume: `resume.html` is generated from `content.js` (summary in `profile.resumeSummary`). After editing content, run `./scripts/build-resume.sh` to refresh `assets/Tamil-Vanan-Resume.pdf` (needs Chrome or Edge).
+- [x] `profile.links.github`: personal GitHub URL (set by `publish.sh`)
+- [x] Resume: `resume.html` is a single-column, ATS-friendly resume generated from `content.js`. Experience bullets and education are shared with the site; the title, summary, competencies and keyword skill rows are in `resume`. After editing content, run `./scripts/build-resume.sh` to refresh `assets/Tamil-Vanan-Resume.pdf` (needs Chrome or Edge). The public PDF has no phone number. For job applications, build a private copy with your phone outside the repo:
+  `PHONE="+91 ..." ./scripts/build-resume.sh ~/Downloads/Tamil_Vanan_Senior_DevOps_Engineer_Resume.pdf`
 - [ ] Replace `assets/img/profile.jpg` with a sharper square headshot (600×600 or larger) when you have one
 - [ ] `contact.formEndpoint` (optional): a free [Formspree](https://formspree.io) form URL adds a "Send a message" form under Let's connect
 - [ ] `profile.links.blog` (optional): a dev.to / Medium / Hashnode profile, shown in the footer
-- [ ] Refine the Lucid Motors and Sify Technologies bullets in `experience` (currently generic)
+- [ ] Update `profile.links.site` (printed on the resume) when the custom domain goes live
 - [ ] Add certifications as you earn them
 - [ ] Review every metric and project for what you're comfortable making public. Don't include internal ticket IDs, account IDs, cluster names, hostnames or exact cost figures.
 
