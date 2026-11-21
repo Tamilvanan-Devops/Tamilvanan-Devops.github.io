@@ -1,5 +1,7 @@
 # Tamil Vanan — Portfolio
 
+**Live:** https://tamilvanan-devops.github.io · Repo: https://github.com/Tamilvanan-Devops/Tamilvanan-Devops.github.io
+
 A static portfolio in plain HTML, CSS and JS with no build step. It's hosted free on **GitHub Pages** and served on a custom domain from **Cloudflare**.
 
 It includes **four complete designs** that all read the same content file, so you edit your details once.
@@ -67,32 +69,26 @@ Other Orbit-only content: `profile.roles` (titles typed out in the hero), `princ
 
 ---
 
-## Go-live plan
+## Publishing updates
 
-### 1. Create your personal GitHub account
-1. Sign up at https://github.com/signup with a **personal** email, not your work one.
-2. Pick a short, professional username, e.g. `tamilvanan-dev`. The free URL will be `https://<username>.github.io`.
-3. Turn on 2FA (Settings → Password and authentication).
-
-### 2. Create the repo and push
-Name the repo exactly `<username>.github.io` so it's served at the root URL.
+The site deploys automatically to GitHub Pages on every push to `main`.
 
 ```bash
 cd ~/Projects/portfolio-site
-git init -b main
-git add .
-git commit -m "Initial portfolio"
-git remote add origin https://github.com/<username>/<username>.github.io.git
-git push -u origin main
+# edit assets/content.js (and/or designs/orbit/*), then:
+PORTFOLIO_YES=1 ./scripts/publish.sh Tamilvanan-Devops
 ```
 
-> Your work machine's `gh`/git may be logged in to your work account. Use HTTPS with a personal access token for the personal account, or set `git config user.email` to your personal email in this repo.
+`publish.sh` temporarily switches the GitHub CLI to the personal account, rebuilds the resume PDF and home page,
+commits as `Tamilvanan-Devops` (noreply email, never the work identity), pushes, and switches back to whichever
+account was active before. Without `PORTFOLIO_YES=1` it asks for confirmation first.
 
-### 3. Turn on GitHub Pages
-Repo → **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-The included workflow deploys on every push. The site goes live at `https://<username>.github.io` in about a minute, and the design gallery at `/designs/`.
+If the personal account is ever logged out of the CLI: `gh auth login --hostname github.com --git-protocol https --web --scopes workflow`
+(sign in as Tamilvanan-Devops), then `gh auth switch --user <work-account>` to go back.
 
-### 4. Buy the domain on Cloudflare
+## Custom domain (optional)
+
+### 1. Buy the domain on Cloudflare
 1. Sign up at https://dash.cloudflare.com, then go to **Domain Registration → Register Domains**.
 2. Search for a name. Availability as of when this was written:
    - `tamilvanan.com` — ❌ taken
@@ -100,7 +96,7 @@ The included workflow deploys on every push. The site goes live at `https://<use
    - `tamilvanan.cloud` / `tamilvanan.io` — ✅ available
 3. Cloudflare charges the registry's cost price (a `.com` is roughly $10–11 a year) and includes WHOIS privacy.
 
-### 5. Point the domain at GitHub Pages
+### 2. Point the domain at GitHub Pages
 In Cloudflare → your domain → **DNS → Records**, add:
 
 | Type  | Name | Content                 | Proxy        |
@@ -109,10 +105,10 @@ In Cloudflare → your domain → **DNS → Records**, add:
 | A     | @    | 185.199.109.153         | DNS only (grey) |
 | A     | @    | 185.199.110.153         | DNS only (grey) |
 | A     | @    | 185.199.111.153         | DNS only (grey) |
-| CNAME | www  | `<username>.github.io`  | DNS only (grey) |
+| CNAME | www  | `tamilvanan-devops.github.io` | DNS only (grey) |
 
 Then:
-1. GitHub repo → **Settings → Pages → Custom domain**: enter `yourdomain.com` and save.
+1. Run `PORTFOLIO_YES=1 ./scripts/publish.sh Tamilvanan-Devops yourdomain.com` (or repo → **Settings → Pages → Custom domain**).
 2. Wait for the DNS check to pass, then tick **Enforce HTTPS**.
 3. Optional: once HTTPS works, you can switch the records to **Proxied (orange)** and set Cloudflare **SSL/TLS → Full**.
 4. Recommended: verify the domain under GitHub **Settings (account) → Pages → Add a verified domain** so nobody else can claim it.
