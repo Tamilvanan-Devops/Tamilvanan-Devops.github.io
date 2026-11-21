@@ -106,7 +106,7 @@ window.PORTFOLIO = {
     { icon: "finops", title: "FinOps & cost engineering", text: "Network egress, pull-through image caches, slimmer Dockerfiles, ECR/S3 lifecycle rules, ARM64, right-sizing and scale-to-zero." },
     { icon: "shield", title: "Security & compliance", text: "External Secrets with Doppler, Kyverno policies, Trivy/Checkmarx scanning, CVE remediation and injection-hardened pipelines." },
     { icon: "ci", title: "CI/CD & developer experience", text: "Reusable GitHub Actions, Jenkins shared libraries, autoscaling ARM64 runners and per-PR ephemeral review environments." },
-    { icon: "obs", title: "Observability & reliability", text: "OpenTelemetry labelling, the ELK stack, Grafana, Argo CD notifications to Teams, and SRE runbooks for stuck releases." },
+    { icon: "obs", title: "Observability & reliability", text: "On-call incident response (weekends included) for synthetic-monitoring failures and alerts, plus OpenTelemetry, the ELK stack, Grafana, Argo CD notifications and SRE runbooks." },
     { icon: "ai", title: "Backstage & AI tooling", text: "Contributing Backstage plugins, and building AI-assisted DevOps with Claude, GitHub Copilot agents, MCP tools and Azure AI Foundry." },
   ],
 
@@ -337,10 +337,11 @@ window.PORTFOLIO = {
       scope: "Platform engineer for the release, Kubernetes and cloud platform behind 14 product lines on AWS and Azure.",
       points: [
         "Architected the multi-stage GitOps release platform (Argo CD, Argo Workflows, ApplicationSets) that ships 187 microservices across 9 stages and 18+ AWS and Azure environments.",
+        "On-call for customer-facing production, including weekends: triage synthetic-monitoring failures and alerts, and resolve customer-specific incidents through to root cause.",
         "Introduced Kargo with PR-based stage promotion (labelled PRs, auto-merge to QA, parallel rebase-and-retry) and a PR-only hotfix lane to production, ending promotion collisions between teams.",
         "Built reusable Argo WorkflowTemplates for DB migrations, Terraform, rollout, smoke tests and automated rollback, with change detection and a mutex for safe parallel releases.",
         "Onboarded 100+ .NET, Python and Node.js services onto one shared Kubernetes deployment model (Kustomize, KEDA, Kong, OpenTelemetry) with health checks and rebuild-free rollback.",
-        "Led platform FinOps from VPC Flow Log data (Python analyser), correcting a 4× cost underestimate: consolidated Karpenter node pools into one AZ (97% of traffic), added S3/ECR/STS VPC endpoints and ECR pull-through caches, and set a roadmap to cut NAT egress cost by ~60%.",
+        "Led platform FinOps and authored its design docs: VPC Flow Log analysis (Python) corrected a 4× cost underestimate; consolidated Karpenter node pools into one AZ (97% of traffic), added S3/ECR/STS VPC endpoints and ECR pull-through caches, and set a roadmap to cut NAT egress cost by ~60%.",
         "Cut image, storage and compute waste: slimmer Dockerfiles, BuildKit cache mounts, ECR/S3 lifecycle rules, workflow TTL and pod GC, Graviton (ARM64) nodes, right-sizing and scale-to-zero.",
         "Delivered per-PR ephemeral review environments (TTL cut from 24h to 8h), an org-wide reusable GitHub Actions toolkit (multi-arch BuildKit builds, semver, test gates) and ARM64 runners scaled from 10 to 50.",
         "Provisioned event-driven messaging as code (AWS SQS/SNS, Azure Service Bus topics and subscriptions) with Terraform and Crossplane, plus KEDA queue-based autoscaling to zero.",
@@ -431,23 +432,23 @@ window.PORTFOLIO = {
   // The phone number is deliberately not stored here, so the public PDF omits it. For applications run:
   //   PHONE="+91 ..." ./scripts/build-resume.sh ~/Downloads/Tamil_Vanan_Senior_DevOps_Engineer_Resume.pdf
   resume: {
-    title: "Senior DevOps Engineer | Site Reliability Engineer | Platform Engineer",
+    title: "Senior DevOps & Site Reliability Engineer | Platform Engineering",
     summary:
-      "Senior DevOps and Site Reliability Engineer with 8+ years of experience designing, automating and operating secure, scalable cloud-native platforms on AWS and Azure. Architect and owner of an enterprise GitOps release platform (Argo CD, Argo Workflows, Kargo) that delivers 187 microservices across 14 product lines, 9 stages and 18+ environments, where every release is automated, auditable and reversible. Deep hands-on expertise in Kubernetes (EKS, AKS, Karpenter, KEDA), Infrastructure as Code (Terraform, Crossplane, Ansible), CI/CD (GitHub Actions, Jenkins, Spinnaker), event-driven messaging, DevSecOps and FinOps. Proven record of replacing manual, people-dependent releases with self-service automation and of cutting cloud spend through data-driven cost engineering. Currently advancing developer experience with Backstage and AI-assisted DevOps (Claude, GitHub Copilot, Azure AI Foundry).",
+      "Senior DevOps and Site Reliability Engineer with 8+ years building and operating secure, scalable, highly available cloud platforms on AWS and Azure. Architect and owner of an enterprise GitOps release platform (Argo CD, Argo Workflows, Kargo) that ships 187 microservices across 14 product lines and 18+ environments, with every production change an automated, auditable pull request. On-call for customer-facing production, including weekends, resolving synthetic-monitoring failures, alerts and customer-specific incidents through to root cause. Expert in Kubernetes (EKS, AKS), Terraform, CI/CD, DevSecOps and FinOps; driving developer productivity with Backstage and AI (Claude, GitHub Copilot, Azure AI Foundry).",
     // `lead` is printed in bold, followed by `text`.
     highlights: [
       { lead: "Release platform at scale:", text: "architected the GitOps platform behind 187 microservices, 895 release definitions and 18+ AWS/Azure environments; personally initiated 780+ production-path releases." },
+      { lead: "Production reliability:", text: "on-call for customer-facing production, including weekends; triage synthetic-monitoring failures and alerts and resolve customer-specific incidents through to root cause." },
       { lead: "Faster, safer promotion:", text: "introduced Kargo PR-based promotion with parallel rebase-and-retry and a dedicated hotfix lane, removing release-queue bottlenecks across product teams." },
       { lead: "Data-driven FinOps:", text: "shipped 12+ cost levers across network, images, storage and compute, kept 97% of CI traffic in a single AZ and set a roadmap to cut NAT egress cost by ~60%." },
-      { lead: "Developer experience:", text: "delivered per-PR ephemeral environments (TTL 24h → 8h), scaled ARM64 CI runners from 10 to 50 and moved hundreds of workflows to GitHub-hosted ARM64 runners." },
-      { lead: "Platform modernisation:", text: "migrated service deployments from Spinnaker to Argo CD GitOps and onboarded 100+ .NET, Python and Node.js services onto one shared Kubernetes deployment model." },
+      { lead: "Developer productivity:", text: "per-PR ephemeral environments (TTL 24h → 8h), ARM64 CI runners scaled from 10 to 50, and 100+ services moved from Spinnaker onto one shared GitOps deployment model." },
       { lead: "Secure by default:", text: "standardised secrets on External Secrets Operator + Doppler, rolled out Kyverno policies without outages, replaced PATs with GitHub App tokens and remediated HIGH/CRITICAL CVEs." },
     ],
     competencies: [
-      "Platform Engineering", "Site Reliability Engineering (SRE)", "GitOps & Release Engineering",
+      "Site Reliability Engineering (SRE)", "Platform Engineering", "GitOps & Release Engineering",
       "Kubernetes (EKS / AKS)", "CI/CD Pipeline Architecture", "Infrastructure as Code (IaC)",
       "Multi-Cloud (AWS & Azure)", "Cloud Cost Optimization (FinOps)", "DevSecOps",
-      "Observability & Monitoring", "High Availability & DR", "Incident Management & RCA",
+      "Observability & Monitoring", "Incident Response & On-Call", "High Availability & DR",
     ],
     skills: [
       { group: "Cloud Platforms", items: "AWS (EKS, EC2, VPC networking, ELB, S3, ECR, IAM, RDS, Route 53, CloudFront, SQS, SNS, CloudWatch, Elastic Beanstalk, CodePipeline, CodeDeploy), Azure (AKS, Service Bus, Key Vault, Log Analytics, AI Foundry), IBM Cloud, Cloudflare" },
@@ -457,6 +458,7 @@ window.PORTFOLIO = {
       { group: "Infrastructure as Code", items: "Terraform, Crossplane, Ansible" },
       { group: "Messaging & Data", items: "Kafka, AWS SQS/SNS, Azure Service Bus, MongoDB, Redis, PostgreSQL, TiDB" },
       { group: "Observability", items: "OpenTelemetry, Prometheus, Grafana, ELK Stack, CloudWatch, Nagios" },
+      { group: "Reliability & Operations", items: "On-call incident response, synthetic monitoring, alerting, root-cause analysis, runbooks, backup & disaster recovery" },
       { group: "Security", items: "External Secrets Operator, Doppler, Vault, Kyverno, Trivy, Checkmarx, IAM & RBAC" },
       { group: "Languages & Tools", items: "Bash, Python, Groovy, Node.js, YAML, Jsonnet, Git, Linux (CentOS), Windows Server, Apache, Tomcat, Jira, Confluence" },
       { group: "AI & Developer Portals", items: "Backstage, Claude Code, GitHub Copilot, MCP servers, Azure AI Foundry" },
