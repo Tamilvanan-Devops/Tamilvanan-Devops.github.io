@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <meta name="site-root" content="../../" />
+  <title>tamil@platform:~ — Senior DevOps & SRE Engineer</title>
+  <meta name="description" content="Senior DevOps / SRE Engineer architecting GitOps-driven release automation, scalable Kubernetes infrastructure and cost-optimized multi-cloud foundations on AWS and Azure." />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../designs/console/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="titlebar">
+      <span class="dots"><i></i><i></i><i></i></span>
+      <span class="title">tamil@platform: ~/portfolio</span>
+      <span class="tb-right"><a id="tbResume" target="_blank" rel="noopener">resume.pdf</a></span>
+    </header>
+
+    <div class="body">
+      <aside class="explorer" aria-label="Sections">
+        <p class="ex-head">EXPLORER</p>
+        <p class="ex-folder">▾ portfolio</p>
+        <nav id="files">
+          <a href="#whoami"><span class="ft md">M↓</span>README.md</a>
+          <a href="#about"><span class="ft md">M↓</span>about.md</a>
+          <a href="#impact"><span class="ft json">{}</span>impact.json</a>
+          <a href="#projects"><span class="ft yml">Y</span>projects.yaml</a>
+          <a href="#experience"><span class="ft log">≡</span>career.log</a>
+          <a href="#stack"><span class="ft yml">Y</span>stack.yaml</a>
+          <a href="#contact"><span class="ft sh">$</span>contact.sh</a>
+        </nav>
+        <div class="ex-status">
+          <p><span class="ok">●</span> cluster: <b>healthy</b></p>
+          <p><span class="ok">●</span> sync: <b>Synced</b></p>
+          <p id="clock"></p>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section id="whoami" class="term">
+          <div class="term-out" id="typed" aria-live="polite"></div>
+          <div class="hero-text" id="heroText"></div>
+        </section>
+
+        <section id="about" class="pane">
+          <div class="pane-tab"><span class="ft md">M↓</span>about.md</div>
+          <div class="md" id="aboutMd"></div>
+        </section>
+
+        <section id="impact" class="pane">
+          <div class="pane-tab"><span class="ft json">{}</span>impact.json</div>
+          <p class="cmd"><span class="ps">$</span> kubectl top platform --sort-by=impact</p>
+          <div class="metric-grid" id="metrics"></div>
+          <p class="cmd"><span class="ps">$</span> kubectl get capabilities</p>
+          <div class="caps" id="caps"></div>
+        </section>
+
+        <section id="projects" class="pane">
+          <div class="pane-tab"><span class="ft yml">Y</span>projects.yaml</div>
+          <p class="cmd"><span class="ps">$</span> kubectl get projects -A <span class="dim"># click a row to describe</span></p>
+          <div class="ns-filter" id="nsFilter"></div>
+          <div class="table-wrap">
+            <table class="k-table" id="projTable">
+              <thead><tr><th>NAMESPACE</th><th>NAME</th><th>STATUS</th><th>STACK</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="describe" id="describe"></div>
+        </section>
+
+        <section id="experience" class="pane">
+          <div class="pane-tab"><span class="ft log">≡</span>career.log</div>
+          <p class="cmd"><span class="ps">$</span> git log --graph --decorate career</p>
+          <div class="gitlog" id="gitlog"></div>
+        </section>
+
+        <section id="stack" class="pane">
+          <div class="pane-tab"><span class="ft yml">Y</span>stack.yaml</div>
+          <p class="cmd"><span class="ps">$</span> cat stack.yaml</p>
+          <pre class="yaml" id="yaml"></pre>
+        </section>
+
+        <section id="contact" class="pane">
+          <div class="pane-tab"><span class="ft sh">$</span>contact.sh</div>
+          <p class="cmd"><span class="ps">$</span> ./contact.sh --open-to "platform engineering"</p>
+          <div class="contact" id="contact"></div>
+          <p class="cmd blink"><span class="ps">$</span> <span class="cursor"></span></p>
+        </section>
+
+        <footer class="statusbar" id="statusbar"></footer>
+      </main>
+    </div>
+  </div>
+
+  <script src="../../assets/content.js"></script>
+  <script src="../../assets/shared.js"></script>
+  <script src="../../designs/console/app.js"></script>
+</body>
+</html>

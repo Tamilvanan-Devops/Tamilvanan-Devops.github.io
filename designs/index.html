@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Pick a design — Tamil Vanan portfolio</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, system-ui, sans-serif; background: #0b0c10; color: #eef0f4; line-height: 1.6; }
+    header { width: min(1280px, 92vw); margin: 0 auto; padding: 4rem 0 2rem; }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.03em; margin: 0 0 .5rem; }
+    header p { color: #9aa1ad; max-width: 760px; margin: 0; }
+    code { background: #1a1d24; padding: .1rem .4rem; border-radius: 6px; font-size: .9em; }
+    .grid { width: min(1280px, 92vw); margin: 0 auto 4rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .card { border: 1px solid #23262e; border-radius: 20px; background: #12141a; overflow: hidden; display: flex; flex-direction: column; }
+    .frame { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #000; border-bottom: 1px solid #23262e; }
+    .frame iframe { position: absolute; top: 0; left: 0; width: 1440px; height: 900px; border: 0; transform-origin: 0 0; pointer-events: none; }
+    .frame a { position: absolute; inset: 0; }
+    .meta { padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: .6rem; flex: 1; }
+    .meta h2 { margin: 0; font-size: 1.25rem; display: flex; align-items: center; gap: .6rem; }
+    .meta h2 small { font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: .2rem .5rem; border-radius: 6px; background: #1f2a44; color: #8fb0ff; }
+    .meta p { margin: 0; color: #a3aab6; font-size: .95rem; }
+    .meta ul { margin: 0; padding-left: 1.1rem; color: #a3aab6; font-size: .9rem; }
+    .actions { margin-top: auto; display: flex; gap: .6rem; padding-top: .6rem; }
+    .btn { display: inline-flex; padding: .6rem 1rem; border-radius: 10px; font-weight: 600; font-size: .9rem; text-decoration: none; color: #0b0c10; background: #eef0f4; }
+    .btn--ghost { background: transparent; color: #eef0f4; border: 1px solid #2c3039; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pick your portfolio design</h1>
+    <p>Four layouts, all reading the same content from <code>assets/content.js</code>. Open each one full-screen, choose your favourite, then run <code>./scripts/use-design.sh &lt;name&gt;</code> to make it the home page.</p>
+  </header>
+  <main class="grid" id="grid"></main>
+  <script>
+    const designs = [
+      { id: "orbit", name: "Orbit", tag: "Closest to your reference", desc: "Dark, cinematic, platform-engineering feel: animated wireframe globe, boot sequence and master/detail case studies.", bullets: ["Rotating globe hero with impact stats", "Category filter with side-by-side case studies", "Timeline, tech marquee and grouped stack"] },
+      { id: "executive", name: "Executive", tag: "Recruiter-friendly", desc: "Light editorial layout with serif typography and a sticky sidebar. Calm, senior and quick to scan.", bullets: ["Sticky name/nav sidebar with scroll-spy", "Numbered case studies that expand inline", "Prints and reads well for hiring managers"] },
+      { id: "console", name: "Console", tag: "Most DevOps-native", desc: "Terminal/IDE style: a typed kubectl session, a project table with describe output, git log career and YAML skills.", bullets: ["Typed whoami / kubectl hero", "kubectl get projects table with describe view", "git log career graph and YAML skills"] },
+      { id: "bento", name: "Bento", tag: "Modern product style", desc: "Tiled bento grid like Apple or Linear, with a live Chennai clock, project modals and a light/dark toggle.", bullets: ["Bento intro tiles with live status", "Filterable project cards with modal deep dives", "Light & dark themes"] },
+    ];
+    const grid = document.getElementById("grid");
+    grid.innerHTML = designs.map((d) => `
+      <article class="card">
+        <div class="frame"><iframe src="./${d.id}/" title="${d.name} preview" loading="lazy" tabindex="-1"></iframe><a href="./${d.id}/" aria-label="Open ${d.name}"></a></div>
+        <div class="meta">
+          <h2>${d.name} <small>${d.tag}</small></h2>
+          <p>${d.desc}</p>
+          <ul>${d.bullets.map((b) => `<li>${b}</li>`).join("")}</ul>
+          <div class="actions"><a class="btn" href="./${d.id}/">Open full page</a><a class="btn btn--ghost" href="./${d.id}/" target="_blank" rel="noopener">New tab ↗</a></div>
+        </div>
+      </article>`).join("");
+    const fit = () => document.querySelectorAll(".frame").forEach((f) => { f.querySelector("iframe").style.transform = `scale(${f.clientWidth / 1440})`; });
+    addEventListener("resize", fit); fit();
+  </script>
+</body>
+</html>

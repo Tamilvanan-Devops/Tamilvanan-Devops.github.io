@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <meta name="site-root" content="../../" />
+  <title>Tamil Vanan — Senior DevOps & SRE Engineer</title>
+  <meta name="description" content="Senior DevOps / SRE Engineer architecting GitOps-driven release automation, scalable Kubernetes infrastructure and cost-optimized multi-cloud foundations on AWS and Azure." />
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script>document.documentElement.dataset.theme = localStorage.getItem("bento-theme") || "dark";</script>
+  <link rel="stylesheet" href="../../designs/bento/style.css" />
+</head>
+<body>
+  <header class="top">
+    <a href="#" class="logo"><span>TV</span></a>
+    <nav class="links" aria-label="Primary"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#toolbox">Toolbox</a><a href="#contact">Contact</a></nav>
+    <button class="theme" id="theme" aria-label="Toggle light/dark theme"></button>
+  </header>
+
+  <main class="wrap">
+    <section class="bento" aria-label="Introduction">
+      <article class="tile t-intro">
+        <div class="avatar"><span>TV</span></div>
+        <p class="eyebrow" id="eyebrow"></p>
+        <h1 id="headline"></h1>
+        <p class="tagline" id="tagline"></p>
+        <div class="row" id="introCta"></div>
+      </article>
+
+      <article class="tile t-status">
+        <p class="label">Status</p>
+        <p class="status"><span class="live"></span><span id="status"></span></p>
+        <div class="clock"><b id="time"></b><span id="where"></span></div>
+      </article>
+
+      <article class="tile t-metric t-m1"></article>
+      <article class="tile t-metric t-m2"></article>
+
+      <article class="tile t-stack">
+        <p class="label">Daily drivers</p>
+        <div class="loop"><div class="loop__track" id="loopA"></div></div>
+        <div class="loop loop--rev"><div class="loop__track" id="loopB"></div></div>
+      </article>
+
+      <article class="tile t-now">
+        <p class="label">Currently</p>
+        <ul class="now" id="now"></ul>
+      </article>
+
+      <article class="tile t-metric t-m3"></article>
+      <article class="tile t-metric t-years"></article>
+
+      <a class="tile t-social t-li" id="liTile" target="_blank" rel="noopener"></a>
+      <a class="tile t-social t-gh" id="ghTile" target="_blank" rel="noopener"></a>
+    </section>
+
+    <section class="section" id="about">
+      <div class="split">
+        <h2 class="h2">Platform engineering that <span class="accent">disappears</span> into the workflow.</h2>
+        <div class="prose" id="aboutBody"></div>
+      </div>
+      <div class="metrics" id="metrics"></div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="head"><h2 class="h2">Selected work</h2><div class="chips" id="filters"></div></div>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <section class="section" id="experience">
+      <h2 class="h2">Experience</h2>
+      <div class="xp" id="xp"></div>
+    </section>
+
+    <section class="section" id="toolbox">
+      <h2 class="h2">Toolbox</h2>
+      <div class="focus" id="focus"></div>
+      <div class="skills" id="skills"></div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="tile t-contact">
+        <h2 class="h2">Let's make your releases <span class="accent">boring.</span></h2>
+        <p id="contactText"></p>
+        <div class="row" id="contactCta"></div>
+      </div>
+    </section>
+
+    <footer class="foot" id="foot"></footer>
+  </main>
+
+  <dialog id="modal" aria-labelledby="mTitle">
+    <button class="close" id="mClose" aria-label="Close"></button>
+    <div id="mBody"></div>
+  </dialog>
+
+  <script src="../../assets/content.js"></script>
+  <script src="../../assets/shared.js"></script>
+  <script src="../../designs/bento/app.js"></script>
+</body>
+</html>

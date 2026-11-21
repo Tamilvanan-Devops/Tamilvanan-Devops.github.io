@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="site-root" content="" />
+  <title>Tamil Vanan — Senior DevOps & SRE Engineer</title>
+  <meta name="description" content="Senior DevOps / SRE Engineer architecting GitOps-driven release automation, scalable Kubernetes infrastructure and cost-optimized multi-cloud foundations on AWS and Azure." />
+  <meta name="theme-color" content="#05070f" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="designs/orbit/style.css" />
+</head>
+<body>
+  <canvas id="space" class="space" aria-hidden="true"></canvas>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="sat" viewBox="0 0 220 120">
+        <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round">
+          <path d="M8 34h64v52H8zM8 47h64M8 60h64M8 73h64M24 34v52M40 34v52M56 34v52"/>
+          <path d="M148 34h64v52h-64zM148 47h64M148 60h64M148 73h64M164 34v52M180 34v52M196 34v52"/>
+          <path d="M72 60h20M128 60h20M72 52h20M128 68h20"/>
+          <path d="M92 44h36v32H92zM92 52h36M92 60h36M92 68h36M101 44v32M110 44v32M119 44v32"/>
+          <path d="M110 44V24M100 24h20"/>
+        </g>
+        <ellipse cx="110" cy="60" rx="8" ry="16" fill="none" stroke="#f59e0b" stroke-width="1.6"/>
+        <path d="M104 24a12 8 0 0 0 12 0" fill="none" stroke="#34d399" stroke-width="1.4"/>
+        <circle cx="110" cy="18" r="2.4" fill="#3ccfff"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></circle>
+      </symbol>
+      <symbol id="ringed" viewBox="0 0 200 200">
+        <defs>
+          <radialGradient id="rgBody" cx="35%" cy="32%" r="70%"><stop offset="0" stop-color="#c4d3ff"/><stop offset=".45" stop-color="#4c5fd5"/><stop offset="1" stop-color="#0b1030"/></radialGradient>
+        </defs>
+        <ellipse cx="100" cy="100" rx="92" ry="24" fill="none" stroke="#3ccfff" stroke-opacity=".35" stroke-dasharray="3 5" transform="rotate(-18 100 100)"/>
+        <circle cx="100" cy="100" r="38" fill="url(#rgBody)"/>
+        <path d="M66 94h68M64 106h72M70 82h60M72 118h56" stroke="#9fb4ff" stroke-opacity=".25" fill="none"/>
+        <path d="M10 113a92 24 0 0 0 180 -26" fill="none" stroke="#9fb4ff" stroke-opacity=".7" stroke-width="2.2" transform="rotate(-18 100 100)"/>
+        <g transform="rotate(-18 100 100)">
+          <circle r="5" fill="#f59e0b"><animateMotion dur="11s" repeatCount="indefinite" path="M192,100 A92,24 0 1,1 8,100 A92,24 0 1,1 192,100"/></circle>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot__inner">
+      <p class="boot__title">TAMIL VANAN / PLATFORM ENGINEERING</p>
+      <ol class="boot__steps">
+        <li>resolving desired state</li>
+        <li>syncing 895 manifests</li>
+        <li>health checks</li>
+        <li>portfolio ready</li>
+      </ol>
+      <div class="boot__bar"><span></span></div>
+    </div>
+  </div>
+
+  <header class="nav" id="nav">
+    <a href="#top" class="brand" aria-label="Tamil Vanan — back to top">
+      <svg class="brand__logo" viewBox="0 0 40 40" width="38" height="38" fill="none" stroke="url(#brandGrad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <defs><linearGradient id="brandGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#9fb4ff"/><stop offset=".5" stop-color="#6d8dff"/><stop offset="1" stop-color="#3ccfff"/></linearGradient></defs>
+        <g class="brand__loop">
+          <path d="M33.52 16.38A14 14 0 0 0 9.28 11"/><path d="M9.28 6v5h4.92"/>
+          <path d="M6.48 23.62A14 14 0 0 0 30.72 29"/><path d="M30.72 34v-5h-4.92"/>
+        </g>
+        <path d="M20 12.5l6.5 3.75v7.5L20 27.5l-6.5-3.75v-7.5z"/>
+        <circle cx="20" cy="20" r="2.3" fill="#3ccfff" stroke="none"/>
+      </svg>
+    </a>
+    <button class="nav__me" id="navMe" type="button" aria-label="Open Tamil Vanan's profile card" tabindex="-1">
+      <img id="navMeImg" alt="" width="34" height="34" />
+      <span><b id="navMeName"></b><small id="navMeRole"></small></span>
+    </button>
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <button class="menu-me" id="menuMe" type="button"><img id="menuMeImg" alt="" width="44" height="44" /><span><b id="menuMeName"></b><small id="menuMeRole"></small></span></button>
+      <a href="#about">About</a><a href="#impact">Impact</a><a href="#credentials">Credentials</a><a href="#work">Work</a><a href="#experience">Experience</a><a href="#stack">Tech stack</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <span class="nav__section" id="navSection" aria-hidden="true"></span>
+      <a class="btn btn--sm btn--primary" id="resumeBtn" target="_blank" rel="noopener" hidden></a>
+      <button class="burger" id="burger" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+    </div>
+    <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  </header>
+
+  <dialog class="crew" id="crew" aria-labelledby="crewName">
+    <button class="crew__close" id="crewClose" type="button" aria-label="Close profile card"></button>
+    <div class="crew__photo"><img id="crewImg" alt="" /><span class="crew__scan" aria-hidden="true"></span></div>
+    <div class="crew__body">
+      <p class="crew__id" id="crewId"></p>
+      <h2 class="crew__name" id="crewName"></h2>
+      <p class="crew__role" id="crewRole"></p>
+      <dl class="crew__stats" id="crewStats"></dl>
+      <p class="crew__status"><span class="pulse"></span><span id="crewStatus"></span></p>
+      <div class="crew__links" id="crewLinks"></div>
+    </div>
+  </dialog>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 56 56" aria-hidden="true">
+      <circle class="to-top__dash" cx="28" cy="28" r="26.5"/>
+      <circle class="to-top__track" cx="28" cy="28" r="22"/>
+      <circle class="to-top__ring" id="toTopRing" cx="28" cy="28" r="22" pathLength="100"/>
+    </svg>
+    <svg class="to-top__arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
+
+  <main id="top">
+    <section class="hero" id="hero" data-theme="hero">
+      <canvas id="globe" aria-hidden="true"></canvas>
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="pill"><span class="pulse"></span><span id="heroEyebrow"></span></p>
+          <p class="hero__hi">Hi there, I'm</p>
+          <h1 class="hero__name" id="heroName"></h1>
+          <p class="hero__roles"><span class="prompt" aria-hidden="true">~$</span> <span class="sr-only" id="rolesSr"></span><span id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span></p>
+          <p class="hero__headline" id="heroHeadline"></p>
+          <p class="hero__tagline" id="heroTagline"></p>
+          <div class="hero__cta" id="heroCta"></div>
+        </div>
+        <div class="hero__visual">
+          <div class="avatar" id="avatar"></div>
+        </div>
+      </div>
+      <div class="hero__stats" id="heroStats"></div>
+    </section>
+
+    <div class="marquee" aria-label="Technologies"><div class="marquee__track" id="marquee"></div></div>
+
+    <section class="section" id="about" data-theme="about">
+      <svg class="deco sat sat--about" aria-hidden="true"><use href="#sat"/></svg>
+      <div class="wrap about">
+        <div>
+          <p class="kicker">01 · Who am I</p>
+          <h2 class="h2" data-scramble>I make release day a <span class="grad">non-event.</span></h2>
+          <figure class="quote"><blockquote id="quote"></blockquote><figcaption id="quoteBy"></figcaption></figure>
+        </div>
+        <div class="about__body" id="aboutBody"></div>
+      </div>
+      <div class="wrap">
+        <h3 class="h3" data-scramble>How I work</h3>
+        <ol class="cards cards--4" id="principles"></ol>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="impact" data-theme="impact">
+      <svg class="deco ringed ringed--impact" aria-hidden="true"><use href="#ringed"/></svg>
+      <div class="wrap">
+        <p class="kicker">02 · Impact</p>
+        <h2 class="h2" data-scramble>Outcomes at a <span class="grad">glance.</span></h2>
+        <div class="metrics" id="metrics"></div>
+        <h3 class="h3" data-scramble>Where I work</h3>
+        <div class="cards cards--3" id="focus"></div>
+      </div>
+    </section>
+
+    <section class="section credentials" id="credentials" data-theme="credentials">
+      <canvas id="galaxy" aria-hidden="true"></canvas>
+      <svg class="deco sat sat--creds" aria-hidden="true"><use href="#sat"/></svg>
+      <div class="wrap">
+        <p class="kicker center">03 · Credentials</p>
+        <h2 class="h2 h2--xl center" data-scramble>Education &amp; <span class="grad">certifications.</span></h2>
+        <p class="lead center lead--center">The degree that started it, what I've certified, and what I'm certifying next.</p>
+        <div class="certs" id="certs"></div>
+      </div>
+    </section>
+
+    <section class="section" id="work" data-theme="work">
+      <svg class="deco sat sat--work" aria-hidden="true"><use href="#sat"/></svg>
+      <div class="wrap">
+        <p class="kicker">04 · Selected work</p>
+        <h2 class="h2" data-scramble>Production <span class="grad">systems.</span></h2>
+        <p class="lead">Selected production work across GitOps delivery, Kubernetes, messaging, FinOps, CI/CD, IaC, security and observability. Pick a domain.</p>
+        <div class="tabs" id="tabs" role="tablist" aria-label="Project domains"></div>
+        <div class="picker" id="picker" aria-label="Projects in this domain"></div>
+        <article class="case" id="case" role="tabpanel" aria-live="polite"></article>
+        <div id="labsWrap" hidden>
+          <h3 class="h3">Open-source labs</h3>
+          <div class="labs" id="labs"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="experience" data-theme="experience">
+      <div class="wrap">
+        <div class="xp-head">
+          <div>
+            <p class="kicker">05 · Career trajectory</p>
+            <h2 class="h2 h2--xl grad" data-scramble>Experience</h2>
+          </div>
+          <div>
+            <p class="xp-total" id="xpTotal"></p>
+            <p class="lead" id="journeyIntro"></p>
+          </div>
+        </div>
+        <ol class="beam" id="beam"></ol>
+        <h3 class="h3" data-scramble>Milestones</h3>
+        <ol class="journey" id="journey"></ol>
+      </div>
+    </section>
+
+    <section class="section stack" id="stack" data-theme="stack">
+      <canvas id="plexus" aria-hidden="true"></canvas>
+      <div class="wrap">
+        <p class="kicker center">06 · Toolchain</p>
+        <h2 class="h2 h2--xl center" data-scramble>The technologies <span class="grad">behind my work.</span></h2>
+        <p class="stack__sub" id="stackSub"></p>
+        <div class="skills" id="skills"></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" data-theme="contact">
+      <canvas id="planet" aria-hidden="true"></canvas>
+      <div class="wrap contact__inner">
+        <p class="kicker">07 · Establish connection</p>
+        <h2 class="h2 h2--xl" data-scramble>Let's <span class="grad">connect.</span></h2>
+        <p class="lead" id="available"></p>
+        <div class="cta__links" id="contactLinks"></div>
+        <a class="resume-link" id="resumeLink" target="_blank" rel="noopener" hidden>View my resume <span aria-hidden="true">→</span></a>
+        <p class="cta__h">Happy to talk about</p>
+        <ul class="talk" id="talk"></ul>
+        <p class="drag-hint" id="dragHint"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3l7 17 2.5-7.5L21 10z"/></svg>Drag to spin the planet</p>
+        <form class="form" id="contactForm" hidden novalidate>
+          <p class="form__title">Send a message</p>
+          <div class="form__row">
+            <label>Name<input name="name" autocomplete="name" required maxlength="100" /></label>
+            <label>Email<input name="email" type="email" autocomplete="email" required maxlength="200" /></label>
+          </div>
+          <label>Subject<input name="subject" maxlength="150" placeholder="Platform engineering role, GitOps question…" /></label>
+          <label>Message<textarea name="message" rows="5" required maxlength="4000"></textarea></label>
+          <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button class="btn btn--primary" type="submit" id="formBtn"></button>
+          <p class="form__status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="footer__social" id="social"></div><p id="footer"></p></footer>
+
+  <script src="assets/content.js"></script>
+  <script src="assets/shared.js"></script>
+  <script src="designs/orbit/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+# Tamil Vanan — Portfolio
+
+A static portfolio in plain HTML, CSS and JS with no build step. It's hosted free on **GitHub Pages** and served on a custom domain from **Cloudflare**.
+
+It includes **four complete designs** that all read the same content file, so you edit your details once.
+
+| Design | Style | Preview |
+|---|---|---|
+| `orbit` | Dark, cinematic, animated globe (closest to anishshettyk.com) | `/designs/orbit/` |
+| `executive` | Light editorial, serif, sticky sidebar (recruiter-friendly) | `/designs/executive/` |
+| `console` | Terminal/IDE: typed kubectl, project table, git-log career | `/designs/console/` |
+| `bento` | Modern bento grid, project modals, light/dark toggle | `/designs/bento/` |
+
+```
+assets/content.js          # ALL your content: profile, metrics, projects, experience, skills
+assets/shared.js           # helpers shared by every design (icons, links, scroll-spy)
+designs/index.html         # gallery that compares all four designs side by side
+designs/<name>/            # index.html + style.css + app.js for each design
+index.html                 # the live home page (generated from your chosen design)
+scripts/use-design.sh      # promotes a design to index.html
+scripts/build-resume.sh    # rebuilds assets/Tamil-Vanan-Resume.pdf from resume.html
+resume.html                # printable resume generated from content.js
+.github/workflows/deploy.yml
+```
+
+## Preview locally
+
+```bash
+cd ~/Projects/portfolio-site
+python3 -m http.server 8080
+# gallery:   http://localhost:8080/designs/
+# home page: http://localhost:8080/
+```
+
+## Choose the home-page design
+
+```bash
+./scripts/use-design.sh executive   # or orbit | console | bento
+```
+
+This rewrites `index.html`. Run it again whenever you change your mind; the other designs stay available under `/designs/`.
+
+## Edit your content (`assets/content.js`)
+
+Already set: LinkedIn, email (`tamilvananaws@gmail.com`) and profile photo (`assets/img/profile.jpg`, the public 200×200 LinkedIn image).
+
+Total experience (shown as "8 yrs 9 mos across 3 companies") and each role's duration are **calculated automatically** from the `experience` periods, so they stay current. You only need to edit dates.
+
+Tech logos are self-hosted in `assets/icons/` (devicon, MIT; simple-icons, CC0) and mapped by name in `logos`. Anything without a logo shows a small hexagon icon.
+
+- [ ] `profile.links.github`: your personal GitHub URL (currently a placeholder)
+- [x] Resume: `resume.html` is generated from `content.js` (summary in `profile.resumeSummary`). After editing content, run `./scripts/build-resume.sh` to refresh `assets/Tamil-Vanan-Resume.pdf` (needs Chrome or Edge).
+- [ ] Replace `assets/img/profile.jpg` with a sharper square headshot (600×600 or larger) when you have one
+- [ ] `contact.formEndpoint` (optional): a free [Formspree](https://formspree.io) form URL adds a "Send a message" form under Let's connect
+- [ ] `profile.links.blog` (optional): a dev.to / Medium / Hashnode profile, shown in the footer
+- [ ] Refine the Lucid Motors and Sify Technologies bullets in `experience` (currently generic)
+- [ ] Add certifications as you earn them
+- [ ] Review every metric and project for what you're comfortable making public. Don't include internal ticket IDs, account IDs, cluster names, hostnames or exact cost figures.
+
+To add a project, copy an object in `projects` and set its `category`. Filters are generated from the categories automatically. Give a project `links: { code, writeup, demo }` to show buttons on its case study.
+
+Public side projects go in `labs` (title, summary, stack, code, demo). The "Open-source labs" section appears in Orbit once the list has entries.
+
+Orbit colours: each section has its own accent (`[data-theme]` rules at the top of `designs/orbit/style.css`), and each Work domain tab has its own colour and icon (`DOMAINS` in `designs/orbit/app.js`). A new project `category` gets a tab automatically; add it to `DOMAINS` to give it a colour.
+
+Other Orbit-only content: `profile.roles` (titles typed out in the hero), `principles` ("How I work"), `journey` (Milestones), `contact.talkAbout`, and `experience[].current` (the "Now shipping" badge). In the Experience timeline each role shows its first two points, and the rest sit behind "Show more outcomes".
+
+---
+
+## Go-live plan
+
+### 1. Create your personal GitHub account
+1. Sign up at https://github.com/signup with a **personal** email, not your work one.
+2. Pick a short, professional username, e.g. `tamilvanan-dev`. The free URL will be `https://<username>.github.io`.
+3. Turn on 2FA (Settings → Password and authentication).
+
+### 2. Create the repo and push
+Name the repo exactly `<username>.github.io` so it's served at the root URL.
+
+```bash
+cd ~/Projects/portfolio-site
+git init -b main
+git add .
+git commit -m "Initial portfolio"
+git remote add origin https://github.com/<username>/<username>.github.io.git
+git push -u origin main
+```
+
+> Your work machine's `gh`/git may be logged in to your work account. Use HTTPS with a personal access token for the personal account, or set `git config user.email` to your personal email in this repo.
+
+### 3. Turn on GitHub Pages
+Repo → **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+The included workflow deploys on every push. The site goes live at `https://<username>.github.io` in about a minute, and the design gallery at `/designs/`.
+
+### 4. Buy the domain on Cloudflare
+1. Sign up at https://dash.cloudflare.com, then go to **Domain Registration → Register Domains**.
+2. Search for a name. Availability as of when this was written:
+   - `tamilvanan.com` — ❌ taken
+   - `tamilvananv.com` — ✅ available
+   - `tamilvanan.cloud` / `tamilvanan.io` — ✅ available
+3. Cloudflare charges the registry's cost price (a `.com` is roughly $10–11 a year) and includes WHOIS privacy.
+
+### 5. Point the domain at GitHub Pages
+In Cloudflare → your domain → **DNS → Records**, add:
+
+| Type  | Name | Content                 | Proxy        |
+|-------|------|-------------------------|--------------|
+| A     | @    | 185.199.108.153         | DNS only (grey) |
+| A     | @    | 185.199.109.153         | DNS only (grey) |
+| A     | @    | 185.199.110.153         | DNS only (grey) |
+| A     | @    | 185.199.111.153         | DNS only (grey) |
+| CNAME | www  | `<username>.github.io`  | DNS only (grey) |
+
+Then:
+1. GitHub repo → **Settings → Pages → Custom domain**: enter `yourdomain.com` and save.
+2. Wait for the DNS check to pass, then tick **Enforce HTTPS**.
+3. Optional: once HTTPS works, you can switch the records to **Proxied (orange)** and set Cloudflare **SSL/TLS → Full**.
+4. Recommended: verify the domain under GitHub **Settings (account) → Pages → Add a verified domain** so nobody else can claim it.
+
+### Alternative: host on Cloudflare Pages instead
+Cloudflare → **Workers & Pages → Create → Pages → Connect to Git**, pick the repo, leave the build command empty and set the output directory to `/`. Then add the custom domain from the Pages project. Cloudflare handles DNS and SSL automatically.
