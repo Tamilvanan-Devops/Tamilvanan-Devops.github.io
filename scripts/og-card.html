@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex" />
+  <!-- Template for assets/img/og-card.png (the link-preview image LinkedIn and others show).
+       Rebuild with ./scripts/build-og-image.sh after changing the name, title or headline in content.js. -->
+  <title>Social preview card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #05070f; }
+    .card {
+      position: relative; width: 1200px; height: 630px; overflow: hidden; color: #e8eefb; font-family: "Space Grotesk", sans-serif;
+      background:
+        radial-gradient(ellipse 34% 58% at 21% 50%, rgba(91, 140, 255, .26), transparent 72%),
+        radial-gradient(ellipse 44% 52% at 92% 4%, rgba(167, 139, 250, .2), transparent 70%),
+        radial-gradient(ellipse 40% 46% at 78% 104%, rgba(60, 207, 255, .14), transparent 70%),
+        #05070f;
+    }
+    #stars { position: absolute; inset: 0; }
+    .card::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: linear-gradient(90deg, #dbe4ff, #6d8dff 28%, #3ccfff 55%, #a78bfa 78%, #f59e0b); }
+
+    .orbit { position: absolute; left: 46px; top: 115px; width: 400px; height: 400px; overflow: visible; }
+    .orbit .moon { filter: drop-shadow(0 0 7px #3ccfff); }
+    .orbit .mars { filter: drop-shadow(0 0 6px #f59e0b); }
+
+    .text { position: absolute; left: 488px; right: 60px; top: 112px; }
+    .kicker { display: flex; align-items: center; gap: 14px; margin: 0 0 20px; font-family: "Space Mono", monospace; font-size: 17px; letter-spacing: .2em; text-transform: uppercase; color: #3ccfff; }
+    .kicker::before { content: ""; width: 38px; height: 1px; background: linear-gradient(90deg, transparent, #3ccfff); }
+    h1 { margin: 0; padding-bottom: 6px; font-size: 94px; line-height: .98; letter-spacing: -.045em; font-weight: 700; background: linear-gradient(90deg, #eef2ff, #9fb4ff 28%, #5b8cff 52%, #3ccfff 74%, #a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .role { margin: 16px 0 0; font-size: 31px; font-weight: 600; letter-spacing: -.01em; color: #eef2ff; }
+    .headline { margin: 12px 0 0; font-size: 23px; font-weight: 500; color: #9aa7c7; }
+    .headline span { background: linear-gradient(90deg, #6d8dff, #3ccfff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+    .chips span { padding: 7px 14px; border: 1px solid rgba(148, 163, 184, .3); border-radius: 8px; background: rgba(255, 255, 255, .035); font-family: "Space Mono", monospace; font-size: 16px; color: #c9d4ef; }
+
+    .foot { position: absolute; left: 488px; right: 60px; bottom: 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px; font-family: "Space Mono", monospace; font-size: 15px; color: #8392b8; white-space: nowrap; }
+    .foot b { color: #eef2ff; font-weight: 700; }
+    .foot .url { display: inline-flex; align-items: center; gap: 10px; color: #c9d4ef; }
+    .foot img { width: 26px; height: 26px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <canvas id="stars" width="1200" height="630"></canvas>
+
+    <svg class="orbit" viewBox="0 0 400 400" aria-hidden="true">
+      <defs>
+        <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fb4ff" /><stop offset=".5" stop-color="#6d8dff" /><stop offset="1" stop-color="#3ccfff" /></linearGradient>
+        <radialGradient id="moonFill" cx="35%" cy="35%" r="70%"><stop offset="0" stop-color="#d6f6ff" /><stop offset=".55" stop-color="#3ccfff" /><stop offset="1" stop-color="#0b3a4a" /></radialGradient>
+        <radialGradient id="marsFill" cx="35%" cy="35%" r="70%"><stop offset="0" stop-color="#ffe2b3" /><stop offset=".55" stop-color="#f59e0b" /><stop offset="1" stop-color="#5a2a00" /></radialGradient>
+        <clipPath id="clip"><circle cx="200" cy="200" r="112" /></clipPath>
+      </defs>
+      <circle cx="200" cy="200" r="190" fill="none" stroke="rgba(159,180,255,.2)" />
+      <circle cx="200" cy="200" r="152" fill="none" stroke="rgba(60,207,255,.42)" stroke-dasharray="2 7" />
+      <g transform="rotate(-20 200 200)">
+        <ellipse cx="200" cy="200" rx="198" ry="54" fill="none" stroke="rgba(159,180,255,.32)" stroke-width="1.5" />
+      </g>
+      <circle cx="200" cy="200" r="116" fill="#0b1030" />
+      <image id="photo" x="88" y="88" width="224" height="224" clip-path="url(#clip)" preserveAspectRatio="xMidYMid slice" />
+      <text id="initials" x="200" y="222" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="64" font-weight="700" fill="#9fb4ff"></text>
+      <circle cx="200" cy="200" r="114" fill="none" stroke="url(#rim)" stroke-width="3.5" />
+      <g transform="rotate(-20 200 200)">
+        <path d="M398 200 A198 54 0 0 1 2 200" fill="none" stroke="rgba(159,180,255,.75)" stroke-width="2" />
+        <circle class="moon" cx="297" cy="247" r="8" fill="url(#moonFill)" />
+      </g>
+      <circle class="mars" cx="337" cy="96" r="5" fill="url(#marsFill)" />
+    </svg>
+
+    <div class="text">
+      <p class="kicker" id="kicker"></p>
+      <h1 id="name"></h1>
+      <p class="role" id="role"></p>
+      <p class="headline" id="headline"></p>
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <div class="foot">
+      <span id="stats"></span>
+      <span class="url"><img src="../assets/img/favicon.svg" alt="" /><span id="url"></span></span>
+    </div>
+  </div>
+
+  <script src="../assets/content.js"></script>
+  <script>
+    (() => {
+      const P = window.PORTFOLIO, pr = P.profile, R = P.resume || {};
+      const $ = (id) => document.getElementById(id);
+      const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+      const [role, ...rest] = (R.title || pr.role).split("|").map((s) => s.trim());
+
+      $("kicker").textContent = rest.length ? rest.join(" · ") : "Platform Engineering";
+      $("name").textContent = pr.name;
+      $("role").textContent = role;
+      const [first, ...more] = pr.headline.split(/(?<=\.)\s+/);
+      $("headline").innerHTML = `${esc(first)}${more.length ? ` <span>${esc(more.join(" "))}</span>` : ""}`;
+      $("chips").innerHTML = ["Kubernetes", "GitOps", "AWS & Azure", "Terraform", "FinOps"].map((c) => `<span>${esc(c)}</span>`).join("");
+
+      const metric = (v) => P.metrics.find((m) => m.value === v);
+      const stats = [["187", "microservices"], ["18+", "environments"]].filter(([v]) => metric(v));
+      $("stats").innerHTML = stats.map(([v, l]) => `<b>${esc(v)}</b> ${esc(l)}`).join(" &nbsp;·&nbsp; ");
+      $("url").textContent = (pr.links.site || "").replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+      if (pr.photo) $("photo").setAttribute("href", `../${pr.photo}`);
+      else $("initials").textContent = pr.initials || "";
+
+      // Deterministic starfield so rebuilding the image doesn't change it.
+      let s = 20171201;
+      const rnd = () => { s = (s + 0x6d2b79f5) | 0; let t = Math.imul(s ^ (s >>> 15), 1 | s); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+      const ctx = $("stars").getContext("2d");
+      for (let i = 0; i < 340; i++) {
+        const x = rnd() * 1200, y = rnd() * 630, r = rnd() ** 3 * 1.5 + .3, a = .2 + rnd() * .65;
+        ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${215 + (rnd() * 40) | 0}, ${222 + (rnd() * 33) | 0}, 255, ${a})`; ctx.fill();
+      }
+      ctx.shadowColor = "#9fb4ff"; ctx.shadowBlur = 10;
+      for (let i = 0; i < 12; i++) {
+        ctx.beginPath(); ctx.arc(rnd() * 1200, rnd() * 630, 1.3 + rnd() * .9, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(238, 242, 255, .95)"; ctx.fill();
+      }
+    })();
+  </script>
+</body>
+</html>

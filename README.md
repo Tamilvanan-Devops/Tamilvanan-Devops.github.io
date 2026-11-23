@@ -21,6 +21,7 @@ designs/<name>/            # index.html + style.css + app.js for each design
 index.html                 # the live home page (generated from your chosen design)
 scripts/use-design.sh      # promotes a design to index.html
 scripts/build-resume.sh    # rebuilds assets/Tamil-Vanan-Resume.pdf from resume.html
+scripts/build-og-image.sh  # rebuilds assets/img/og-card.png (link-preview image) from scripts/og-card.html
 resume.html                # printable resume generated from content.js
 .github/workflows/deploy.yml
 ```
@@ -53,6 +54,7 @@ Tech logos are self-hosted in `assets/icons/` (devicon, MIT; simple-icons, CC0) 
 - [x] `profile.links.github`: personal GitHub URL (set by `publish.sh`)
 - [x] Resume: `resume.html` is a single-column, ATS-friendly resume generated from `content.js`. Experience bullets and education are shared with the site (each role can also set `scope`, `client` and `promoted`, which the resume prints); the title, summary, career highlights, competencies and keyword skill rows are in `resume`. Keep it to 3 pages: `build-resume.sh` output should report 3 pages when checked. After editing content, run `./scripts/build-resume.sh` to refresh `assets/Tamil-Vanan-Resume.pdf` (needs Chrome or Edge). The public PDF has no phone number. For job applications, build a private copy with your phone outside the repo:
   `PHONE="+91 ..." ./scripts/build-resume.sh ~/Downloads/Tamil_Vanan_Senior_DevOps_Engineer_Resume.pdf`
+- [x] Link previews (LinkedIn Featured, Slack, X): the home page and `resume.html` have Open Graph tags pointing to `assets/img/og-card.png`. After changing your name, title, headline or photo, run `./scripts/build-og-image.sh`.
 - [ ] Replace `assets/img/profile.jpg` with a sharper square headshot (600×600 or larger) when you have one
 - [ ] `contact.formEndpoint` (optional): a free [Formspree](https://formspree.io) form URL adds a "Send a message" form under Let's connect
 - [ ] `profile.links.blog` (optional): a dev.to / Medium / Hashnode profile, shown in the footer
@@ -113,6 +115,9 @@ Then:
 2. Wait for the DNS check to pass, then tick **Enforce HTTPS**.
 3. Optional: once HTTPS works, you can switch the records to **Proxied (orange)** and set Cloudflare **SSL/TLS → Full**.
 4. Recommended: verify the domain under GitHub **Settings (account) → Pages → Add a verified domain** so nobody else can claim it.
+5. Point the link previews and resume at the new domain, then publish again:
+   `grep -rl 'tamilvanan-devops.github.io' designs/orbit/index.html resume.html assets/content.js | xargs sed -i '' 's#https://tamilvanan-devops.github.io#https://yourdomain.com#g'`
+   Then run `./scripts/build-og-image.sh` and `./scripts/build-resume.sh`. LinkedIn caches previews, so refresh yours at https://www.linkedin.com/post-inspector/.
 
 ### Alternative: host on Cloudflare Pages instead
 Cloudflare → **Workers & Pages → Create → Pages → Connect to Git**, pick the repo, leave the build command empty and set the output directory to `/`. Then add the custom domain from the Pages project. Cloudflare handles DNS and SSL automatically.
